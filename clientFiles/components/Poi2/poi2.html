@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-controller="poi2Controller as ctrl">
+    Order by: <select ng-model="sortColumn">
+    <option value=""></option>
+    <option value="pointID">pointID</option>
+    <option value="rankAvg">rankAvg</option>
+
+</select>
+    Search: <input type="text" placeholder="search points" ng-model="searchText.pointID">
+
+    <table>
+        <div class="container">
+            <div class="row">
+                <tr id="what" class="col-md-4" ng-repeat="item in arrall | orderBy:sortColumn | filter:searchText as filtered" >
+
+                    <td><div class="thumbnail" ><img height="200" width="200" ng-click="popPoint(item)" src="{{item.image}}"></div></td>
+                    <td ng-click="popPoint(item)" id="{{$index}}"><div class="thumbnail" >{{item.pointID}}</div></td>
+
+                </tr>
+            </div>
+        </div>
+    </table>
+
+
+</div>
+
+
+</body>
+</html>

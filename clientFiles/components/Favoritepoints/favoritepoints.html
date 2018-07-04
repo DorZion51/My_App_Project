@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #overlay {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            color: rgba(130, 130, 130, 0.5);
+            font-size: 50px;
+            text-align: center;
+            line-height: 100px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="favoritepointsController as ctrl">
+    Search by category: <select ng-model="searchCtaegory.category">
+    <option value=""></option>
+    <option value="fun">fun</option>
+    <option value="visit">visit</option>
+    <option value="bars">bars</option>
+    <option value="food">food</option>
+</select>
+    Search by rank: <input type="text" placeholder="rank" ng-model="searchRank.rankAvg">
+    <button ng-click="Save()">Save priorities</button>
+    <table >
+        <div class="container">
+            <div class="row">
+                <tr id="what" class="col-md-4" ng-repeat="item in arrfa | filter:searchCtaegory | filter:searchRank " class="thumbnail">
+                    <td class="center"><img height="200" ng-click="popPoint(item)" width="200" src="{{item.image}}"></td>
+                    <td class="center">
+                        <div class="thumbnail">
+                        <table >
+                            <tr><b ng-click="popPoint(item)"><label>Name:</label><p id="pid{{$index}}">{{item.pointID}}</p></b></tr>
+                            <tr> <b><label>Category:</label></b> {{item.category}}</tr>
+                            <tr><b> <label>rankAvg:</label></b>{{item.rankAvg}} <br/></tr>
+                            <tr><b><label>my priority:</label></b> {{item.mySort}}  <br/></tr>
+                            <tr><img id="star{{$index}}" src="./images/yellow_star.png" height="40" width="40" ng-click="Remove(item.pointID)"/></tr>
+                            <tr><b> <label>choose priority:</label> </b></tr>
+                            <tr> <input value="Mysort" id="{{item.pointID}}" type="number" min="1" max="infinty"></tr>
+                            <tr><button ng-click="popComment(item.pointID)">Comment</button></tr>
+                            <tr><button ng-click="popRank(item.pointID)">Give Rank</button></tr>
+                        </table>
+                        </div>
+                    </td>
+                </tr>
+            </div>
+        </div>
+    </table>
+</div>
+
+</body>
+</html>

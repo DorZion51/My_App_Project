@@ -1,0 +1,111 @@
+
+<html ng-app="MyApp">
+    <head><title> App</title>
+        <link rel="stylesheet" type="text/css" href="StyleShit.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+        <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+        <script src="app.js" ></script>
+        <script src="myCtrl.js" ></script>
+        <script src="components/About/aboutController.js" ></script>
+        <script src="components/Login/loginController.js"></script>
+        <script src="components/Register/registerController.js"></script>
+        <script src="components/AccountsPoint/accountspointController.js"></script>
+        <script src="components/Poi/poiController.js"></script>
+        <script src="components/Favoritepoints/favoritepointsController.js"></script>
+        <script src="components/Service/Storage.js"></script>
+        <script src="components/Poi2/poi2Controller.js"></script>
+
+
+    </head>
+    <body ng-controller="myCtrl as ctrl">
+     
+        <body>
+
+            <ul>
+              <li><a class="active" href="#/">Home</a></li>
+              <li><a  href="#/about">About</a></li>
+              <li><a ng-show="ctrl.status==0"href="#/login">Login</a></li>
+              <li><a ng-show="ctrl.status==0"href="#/register">Register</a></li>
+              <li><a ng-show="ctrl.status==1"href="#/poi">POI</a></li>
+              <li><a ng-show="ctrl.status==0"href="#/poi2">POI</a></li>
+              <li><a ng-show="ctrl.status==1"href="#/acoountsPoints">Accounts_Points</a></li>
+               <li> <a ng-show="ctrl.status==1" style="color: white;">number of items {{numberOfItems}}</a></li>
+               <li><img ng-show="ctrl.status==1" width="50" height="50" src="images/likes-folder.png" height="1600" width="1600" ng-click="toFavorite()"/></li>
+                <a style="float: right;color: white;">Hello {{name}}</a>
+            </ul>
+            
+        <br>
+        <br>
+            <div id="id10" class="modal">
+                <div class="modal-content">
+                    <div class="container">
+                        <span onclick="document.getElementById('id10').style.display='none'" style="margin-right:50px; " class="button display-topright">&times;</span>
+                        <h1 id="title" style="display: block;margin-left: 0; margin-right: 0;margin-top: 0; width: 50%;" class="center"></h1>
+                        <img height="400" width="200" style="display: block;margin-left: 0; margin-right: 0;margin-top: 0; width: 50%;" id="imgClick"/>
+                        <h6><b>Category :</b></h6>
+                        <p id="cate"></p>
+                        <h6><b>Descreption :</b></h6>
+                        <p id="desc"> now we can see this </p>
+                        <h6><b>Average rank:</b></h6>
+                        <p id="rank"></p>
+                        <h6><b>num of views:</b></h6>
+                        <p id="nov"></p>
+                        <h6><b>Two last comments</b></h6>
+                        <p id="comment1"></p>
+                        <p id="comment2"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div  ng-view></div>
+            <div id="id11" class="modal">
+                <div class="modal-content">
+                    <div class="container">
+                        <span onclick="document.getElementById('id11').style.display='none'" style="margin-right:50px; " class="button display-topright">&times;</span>
+                        <form name="form" >
+                            <div class="center" style="display: block;margin-left: 0; margin-right: 0;margin-top: 0; width: 50%;">
+                                <div id="c"  class="center" class="form-group">
+                                    <label>Comment: </label><input id="comment" placeholder="your comment" type="text" class="form-control"  name="comment" ng-model="country" required/>
+                                    <span ng-show="form.comment.$error.required">
+                                     this filed is require
+                                    </span>
+                                </div>
+                                <input ng-click="WriteComment()" type="submit" class="btn btn-default" ng-disabled="form.$invalid" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="id12" class="modal">
+                <div class="modal-content">
+                    <div class="container">
+                        <span onclick="document.getElementById('id12').style.display='none'" style="margin-right:50px; " class="button display-topright">&times;</span>
+                        <form name="formy" >
+                            <div class="center" style="display: block;margin-left: 0; margin-right: 0;margin-top: 0; width: 50%;">
+                                <div id="Ranka" class="center" class="form-group">
+                                    <label>Rank: </label><input id="ranky" type="number" class="form-control"  name="rank"  required/>
+                                    <span ng-show="form.rank.$error.required">
+                                          this filed is require
+                                     </span>
+                                </div>
+                                <input ng-click="WriteRank()" type="submit" class="btn btn-default" ng-disabled="formy.$invalid" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+</body>
+
+    </body>
+    </html>
+    
+    
+
+    

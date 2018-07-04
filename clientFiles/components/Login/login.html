@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1,h2,h3,h4,h5,h6,label{
+            color:white;
+        }
+        p{
+            color: black;
+        }
+    </style>
+
+</head>
+<body>
+<div class="caption">
+<div id="login" ng-controller="loginController as ctrl" class="container">
+    <h1>Please login</h1>
+    <h2>don't you have a account yet?</h2>
+    <h2>Register Now on below button :-)</h2>
+    <form name="LoginForm" ng-Submit="Login()">
+        <div class="form-group">
+    <div id="Username">
+        <label>username: </label> <input class="form-control" name="uname" ng-model="userName" required/>
+    </div>
+    <div id="Password">
+        <label>password: </label><input class="form-control" type="password" name="pass" ng-model="password" required />
+    </div>
+    <input class="btn btn-default" id="LoginButton" value="Login" type="submit" ng-disabled="LoginForm.$invalid"  class="md-button md-ink-ripple">
+        </div>
+    </form>
+    <button class="btn btn-default" ng-click="Change()">go and register to this app!!!!!</button>
+    <button class="btn btn-default" ng-click="Forgot()">forgot password</button>
+    <form ng-show="forgotPass==1" name="getPassForm">
+        <div cass="form-group">
+        <div id="Username1">
+            <label>username: </label> <input  class="form-control" name="uname" ng-model="userName1" required/>
+            <span ng-show="getPassForm.uname.$error.required">
+                this filed is require
+            </span>
+        </div>
+        <label>question to reset your password:</label>
+        <div id="Answer1">
+            <label>what is your animal name ? </label> <input class="form-control" name="a1" ng-model="answer1" required/>
+            <span ng-show="getPassForm.a1.$error.required">
+                this filed is require
+            </span>
+        </div>
+        <div id="Answer2">
+            <label>what is the name of your first teacher ? </label><input class="form-control" name="a2"  ng-model="answer2" required/>
+            <span ng-show="getPassForm.a2.$error.required">
+                this filed is require
+            </span>
+        </div>
+        <button class="btn btn-default" id="RecoverButton" ng-click="Recover()" ng-disabled="getPassForm.$invalid" class="md-button md-ink-ripple">
+            get Passwod
+        </button>
+        </div>
+    </form>
+    <div >
+    <h2>Explore:</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" id="points" ng-repeat="item in arr">
+                <div class="thumbnail" >
+                        <img height="200" width="200" ng-click="popPoint(item)" src="{{item.image}}" alt="Fjords">
+                            <p class="center" ng-click="popPoint(item)">{{item.pointID}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</div>
+</body>
+</html>

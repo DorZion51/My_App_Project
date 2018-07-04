@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="commentt"  ng-controller="CommentController as ctrl">
+    <h1>comments page</h1>
+    <div id="comment">
+        <a>write here your comment to add: </a><input  ng-model="comment"/>
+    </div>
+    <div id="pointid">
+        <a>which point id: </a><input  ng-model="pointid"/>
+    </div>
+    <button id="AddButton" ng-click="AddComment()" class="md-button md-ink-ripple">
+        add
+    </button>
+    <div id="pointid1">
+        <a>which point id do you want delete comment: </a><input  ng-model="pointid1"/>
+    </div>
+    <button id="DelButton" ng-click="DeleteComment()" class="md-button md-ink-ripple">
+        delete
+    </button>
+</div>
+</body>
+</html>

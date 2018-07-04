@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button ng-click="AddToDB()" >Save in DB</button>
+    <div ng-controller="poiController as ctrl">
+        Order by: <select ng-model="sortColumn">
+                    <option value=""></option>
+                    <option value="pointID">pointID</option>
+                    <option value="rankAvg">rankAvg</option>
+
+        </select>
+        Search: <input type="text" placeholder="search points" ng-model="searchText.pointID">
+
+        <table>
+            <div class="container">
+                <div class="row">
+
+                     <tr id="what" class="col-md-4" ng-repeat="item in arrall | orderBy:sortColumn | filter:searchText as filtered" >
+
+                         <td><div class="thumbnail" ><img height="200" width="200" ng-click="popPoint(item)" src="{{item.image}}"></div></td>
+
+                         <td ng-click="popPoint(item)" id="{{$index}}"><div class="thumbnail" >{{item.pointID}}</div></td>
+                         <td><div class="thumbnail" ><img id="star{{$index}}" ng-hide="Check($index) "  src="./images/black_star.png" height="40" width="40" ng-click="addFavorite($index)"/></div></td>
+                         <td><div class="thumbnail" ><img id="stary{{$index}}" ng-show="Check($index) " src="./images/yellow_star.png" height="40" width="40" ng-click="deleteFavorite($index)"/></div></td>
+
+                     </tr>
+
+                </div>
+            </div>
+        </table>
+        </div>
+
+
+
+</body>
+</html>

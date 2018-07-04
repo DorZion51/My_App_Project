@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div id="saved">
+        <div class="row">
+            <h1>2 saved points</h1>
+            <div id="points" class="col-md-4" ng-repeat="item in arr2Last">
+                <div class="thumbnail" >
+                <img width="200" ng-click="popPoint(item)" height="200" src="{{item.image}}">
+                <p ng-click="popPoint(item)">name: {{item.pointID}}</p>
+                </div>
+            </div>
+            <p id="alert"></p>
+        </div>
+    </div>
+    <div id="recommended">
+        <div class="row">
+        <h1>2 recommended points</h1>
+        <div id="pointsr" class="col-md-4" ng-repeat="item in arr2Rec">
+            <div class="thumbnail" >
+            <img width="200" ng-click="popPoint(item)" height="200" src="{{item.image}}">
+            <p ng-click="popPoint(item)">name: {{item.pointID}}</p>
+            <p>category: {{item.category}}</p>
+            <p>descreption: {{item.descreption}}</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
